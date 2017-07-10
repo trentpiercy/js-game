@@ -21,7 +21,7 @@ function startCountdown() {
 function countdown() {
   ctx.fillStyle=bg_color;
   ctx.fillRect(0,0,canvas.width,canvas.height);
-  ctx.font = "100px Droid Sans";
+  ctx.font = "100px sans-serif";
   ctx.fillStyle="black";
   ctx.textAlign = "center";
   ctx.fillText(count,game_canvas.width/2,game_canvas.height/2);
@@ -31,14 +31,14 @@ function countdown() {
 function drawMenu(text) {
   ctx.fillStyle=bg_color;
   ctx.fillRect(0,0,canvas.width,canvas.height);
-  ctx.font = "50px Droid Sans";
+  ctx.font = "50px sans-serif";
   ctx.fillStyle="black";
   ctx.textAlign = "center";
   ctx.fillText(text,game_canvas.width/2,game_canvas.height/2);
 }
 
 function overdrawMenu(text) {
-  ctx.font = "50px Droid Sans";
+  ctx.font = "50px sans-serif";
   ctx.fillStyle="black";
   ctx.textAlign = "center";
   ctx.fillText(text,game_canvas.width/2,game_canvas.height/2);

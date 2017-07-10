@@ -61,7 +61,7 @@
         <button type="button" class="btn btn-primary" onclick="start1v1()" @click="showPlayButton=false" v-if="showPlayButton">Local 1v1</button>
       </div>
       <div class="container-fluid">
-        <p id="score" v-if="!showPlayButton">Score: 0</p>
+        <h3 id="score" v-if="!showPlayButton">Score: 0</h3>
         <canvas id="game_canvas" class="rounded" width="1000" height="1000"></canvas>
       </div>
     </div>
