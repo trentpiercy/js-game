@@ -32,6 +32,7 @@ startGame = function() {
   tiles=40;
   block_size=game_canvas.width/tiles;
   seperation_size = 4;
+  ended = false;
 
   ax=Math.floor(Math.random()*tiles);
   ay=Math.floor(Math.random()*tiles);
@@ -45,6 +46,7 @@ startGame = function() {
 endGame = function() {
   clearInterval(game_interval);
   overdrawMenu("Press Space to Play Again");
+  ended = true;
 }
 
 function gameLoop() {
@@ -130,7 +132,9 @@ function keyPush(evt) {
         //}
   			break;
       case 32:
-        startGame();
+        if (ended == true) {
+          startGame();
+        }
         break;
   	}
   }
