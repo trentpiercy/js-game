@@ -48,7 +48,7 @@ endGame = function() {
 
 function gameLoop() {
 
-	document.getElementById("score").innerHTML = "score: " + (tail_length-1).toString();
+	document.getElementById("score").innerHTML = "Score: " + (tail_length-1).toString();
 
 	px+=xv;
 	py+=yv;

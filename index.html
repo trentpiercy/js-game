@@ -9,29 +9,51 @@
 
     <style>
 
+    .navbar {
+        margin-bottom: 0px;
+        height: auto;
+        background-color: #F2F3F4;
+    }
+
+    #navbar {
+      font-size: 90%;
+    }
+
     #game_canvas {
       width: 500;
     }
 
     #game {
-      background-color: white;
-      padding: 0px;
+      background-color: auto;
+    }
+
+    .container-fluid {
+      padding: 4px;
     }
 
     </style>
-
   </head>
 
 <body>
-
 <div id="app">
 
-  <button type="button" class="btn btn-primary" v-on:click="showGame=!showGame">show</button>
+  <nav class="navbar navbar-light">
+    <div class="d-flex justify-content-between">
+
+      <div>
+        <button type="button" class="btn btn-primary" v-on:click="showGame=!showGame">show</button>
+        <button type="button" class="btn btn-primary" v-on:click="showGame=!showGame">show</button>
+      </div>
+
+      <button type="button" class="btn btn-primary" v-on:click="showGame=!showGame">show</button>
+      
+    </div>
+  </nav>
 
   <div class="container-fluid" id="game" v-if="showGame">
     <button type="button" class="btn btn-primary" onclick="start()">play</button>
     <div>
-      <p id="score">score: 0</p>
+      <p id="score">Score: 0</p>
       <canvas id="game_canvas" width="1000" height="1000"></canvas>
     </div>
   </div>
