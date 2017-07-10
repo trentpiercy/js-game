@@ -1,4 +1,4 @@
-window.onload=function() {
+start = function() {
 	canvas=document.getElementById("game_canvas");
 	ctx=canvas.getContext("2d");
 	document.addEventListener("keydown",keyPush);
@@ -17,11 +17,11 @@ drawMenu = function(text) {
   ctx.fillText(text,game_canvas.width/2,game_canvas.height/2);
 }
 
-scoreMenu = function(text) {
+overdrawMenu = function(text) {
   ctx.font = "50px Droid Sans";
   ctx.fillStyle="black";
   ctx.textAlign = "center";
-  ctx.fillText("Score: " + (tail_length-1).toString(),game_canvas.width/2,game_canvas.height/2);
+  ctx.fillText(text,game_canvas.width/2,game_canvas.height/2);
 }
 
 startGame = function() {
@@ -43,10 +43,13 @@ startGame = function() {
 
 endGame = function() {
   clearInterval(game_interval);
-  scoreMenu();
+  overdrawMenu("Press Space to Play Again");
 }
 
 function gameLoop() {
+
+	document.getElementById("score").innerHTML = "score: " + (tail_length-1).toString();
+
 	px+=xv;
 	py+=yv;
 

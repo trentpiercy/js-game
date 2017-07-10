@@ -10,7 +10,7 @@
     <style>
 
     #game_canvas {
-      width: 800;
+      width: 500;
     }
 
     #game {
@@ -26,24 +26,28 @@
 
 <div id="app">
 
-  <div class="container-fluid" id="game">
-    <canvas id="game_canvas" width="1000" height="1000"></canvas>
+  <button type="button" class="btn btn-primary" v-on:click="showGame=!showGame">show</button>
+
+  <div class="container-fluid" id="game" v-if="showGame">
+    <button type="button" class="btn btn-primary" onclick="start()">play</button>
+    <div>
+      <p id="score">score: 0</p>
+      <canvas id="game_canvas" width="1000" height="1000"></canvas>
+    </div>
   </div>
 
 </div>
-
 </body>
 
 <script>
-
 var app = new Vue({
   el: '#app',
   data: {
+    showGame: false,
   },
   methods: {
   }
 })
-
 </script>
 
 <script src="snake.js"></script>
