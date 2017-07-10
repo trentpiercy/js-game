@@ -20,11 +20,15 @@
     }
 
     #game_canvas {
-      width: 500;
+      height: calc(100% - 150px);
+      max-width: 100%;
+      border: 1px solid #000;
     }
 
     #game {
       background-color: auto;
+      border: 1px solid #000;
+      margin: 5px;
     }
 
     .container-fluid {
@@ -41,20 +45,25 @@
     <div class="d-flex justify-content-between">
 
       <div>
-        <button type="button" class="btn btn-primary" v-on:click="showGame=!showGame, showPlayButton=true">show</button>
+        <button type="button" class="btn btn-primary" v-on:click="showGame=!showGame, showPlayButton=true" onclick="endGame()">Play Snake!</button>
         <button type="button" class="btn btn-primary" v-on:click="">another one</button>
       </div>
 
-      <button type="button" class="btn btn-primary" v-on:click="">right one</button>
+      <button type="button" class="btn btn-primary" v-on:click="">Profile</button>
 
     </div>
   </nav>
 
-  <div class="container-fluid" id="game" v-if="showGame">
-    <button type="button" class="btn btn-primary" onclick="start()" @click="showPlayButton=false" v-if="showPlayButton">play</button>
-    <div>
-      <p id="score" v-if="!showPlayButton">Score: 0</p>
-      <canvas id="game_canvas" width="1000" height="1000"></canvas>
+  <div class="d-flex justify-content-center">
+    <div class="container-fluid rounded" id="game" v-if="showGame">
+      <div class="container-fluid">
+        <button type="button" class="btn btn-primary" onclick="start()" @click="showPlayButton=false" v-if="showPlayButton">Single Player</button>
+        <button type="button" class="btn btn-primary" onclick="start1v1()" @click="showPlayButton=false" v-if="showPlayButton">Local 1v1</button>
+      </div>
+      <div class="container-fluid">
+        <p id="score" v-if="!showPlayButton">Score: 0</p>
+        <canvas id="game_canvas" class="rounded" width="1000" height="1000"></canvas>
+      </div>
     </div>
   </div>
 
@@ -65,7 +74,7 @@
 var app = new Vue({
   el: '#app',
   data: {
-    showGame: false,
+    showGame: true,
     showPlayButton: true,
   },
   methods: {

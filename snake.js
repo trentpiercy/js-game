@@ -1,4 +1,4 @@
-start = function() {
+function start() {
 	canvas=document.getElementById("game_canvas");
 	ctx=canvas.getContext("2d");
 	document.addEventListener("keydown",keyPush);
@@ -6,10 +6,29 @@ start = function() {
   apl_color = "#d32f2f";
   snake_color = "#64dd17";
   cooldown = 0;
-  startGame();
+  startCountdown();
 }
 
-drawMenu = function(text) {
+function startCountdown() {
+  count = 3;
+
+  countdown();
+  setTimeout(countdown, 1000);
+  setTimeout(countdown, 2000);
+  setTimeout(startGame, 3000);
+}
+
+function countdown() {
+  ctx.fillStyle=bg_color;
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+  ctx.font = "100px Droid Sans";
+  ctx.fillStyle="black";
+  ctx.textAlign = "center";
+  ctx.fillText(count,game_canvas.width/2,game_canvas.height/2);
+  count--;
+}
+
+function drawMenu(text) {
   ctx.fillStyle=bg_color;
   ctx.fillRect(0,0,canvas.width,canvas.height);
   ctx.font = "50px Droid Sans";
@@ -18,14 +37,16 @@ drawMenu = function(text) {
   ctx.fillText(text,game_canvas.width/2,game_canvas.height/2);
 }
 
-overdrawMenu = function(text) {
+function overdrawMenu(text) {
   ctx.font = "50px Droid Sans";
   ctx.fillStyle="black";
   ctx.textAlign = "center";
   ctx.fillText(text,game_canvas.width/2,game_canvas.height/2);
 }
 
-startGame = function() {
+
+function startGame() {
+
   game_interval = setInterval(gameLoop,1000/20);
   game_end = false;
   px=py=1;
@@ -43,10 +64,10 @@ startGame = function() {
   tail_length = 1;
 }
 
-endGame = function() {
+function endGame() {
+  ended = true;
   clearInterval(game_interval);
   overdrawMenu("Press Space to Play Again");
-  ended = true;
 }
 
 function gameLoop() {
@@ -82,6 +103,7 @@ function gameLoop() {
 
 	tail_coords.push({x:px,y:py});
 
+  // Remove for Tron Mode :)
 	while(tail_coords.length>tail_length) {
 	  tail_coords.shift();
 	}
@@ -133,7 +155,7 @@ function keyPush(evt) {
   			break;
       case 32:
         if (ended == true) {
-          startGame();
+          startCountdown();
         }
         break;
   	}
