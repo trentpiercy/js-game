@@ -5,7 +5,8 @@ start = function() {
   bg_color = "#F8F9F9";
   apl_color = "#d32f2f";
   snake_color = "#64dd17";
-  drawMenu("Press Space to Play");
+  cooldown = 0;
+  startGame();
 }
 
 drawMenu = function(text) {
@@ -95,24 +96,42 @@ function gameLoop() {
   if (game_end == true) {
     endGame();
   }
+
+  cooldown--;
+
 }
 
+// Remove "//" for easy mode
 function keyPush(evt) {
-	switch(evt.keyCode) {
-		case 37:
-			xv=-1;yv=0;
-			break;
-		case 38:
-			xv=0;yv=-1;
-			break;
-		case 39:
-			xv=1;yv=0;
-			break;
-		case 40:
-			xv=0;yv=1;
-			break;
-    case 32:
-      startGame();
-      break;
-	}
+  if (cooldown<=0) {
+  	switch(evt.keyCode) {
+  		case 37:
+        //if (xv !== 1) {
+          xv=-1;yv=0;
+          cooldown = 1;
+        //}
+  			break;
+  		case 38:
+        //if (yv !== 1) {
+          xv=0;yv=-1;
+          cooldown = 1;
+        //}
+  			break;
+  		case 39:
+        //if (xv !== -1) {
+          xv=1;yv=0;
+          cooldown = 1;
+        //}
+  			break;
+  		case 40:
+        //if (yv !== -1) {
+          xv=0;yv=1;
+          cooldown = 1;
+        //}
+  			break;
+      case 32:
+        startGame();
+        break;
+  	}
+  }
 }

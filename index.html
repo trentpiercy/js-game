@@ -41,19 +41,19 @@
     <div class="d-flex justify-content-between">
 
       <div>
-        <button type="button" class="btn btn-primary" v-on:click="showGame=!showGame">show</button>
-        <button type="button" class="btn btn-primary" v-on:click="showGame=!showGame">show</button>
+        <button type="button" class="btn btn-primary" v-on:click="showGame=!showGame, showPlayButton=true">show</button>
+        <button type="button" class="btn btn-primary" v-on:click="">another one</button>
       </div>
 
-      <button type="button" class="btn btn-primary" v-on:click="showGame=!showGame">show</button>
-      
+      <button type="button" class="btn btn-primary" v-on:click="">right one</button>
+
     </div>
   </nav>
 
   <div class="container-fluid" id="game" v-if="showGame">
-    <button type="button" class="btn btn-primary" onclick="start()">play</button>
+    <button type="button" class="btn btn-primary" onclick="start()" @click="showPlayButton=false" v-if="showPlayButton">play</button>
     <div>
-      <p id="score">Score: 0</p>
+      <p id="score" v-if="!showPlayButton">Score: 0</p>
       <canvas id="game_canvas" width="1000" height="1000"></canvas>
     </div>
   </div>
@@ -66,6 +66,7 @@ var app = new Vue({
   el: '#app',
   data: {
     showGame: false,
+    showPlayButton: true,
   },
   methods: {
   }
