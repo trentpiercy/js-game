@@ -2,7 +2,7 @@ function start() {
 	canvas=document.getElementById("game_canvas");
 	ctx=canvas.getContext("2d");
 	document.addEventListener("keydown",keyPush);
-  bg_color = "#F8F9F9";
+  bg_color = "white";
   apl_color = "#d32f2f";
   snake_color = "#64dd17";
   cooldown = 0;
