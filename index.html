@@ -1,0 +1,51 @@
+<html>
+  <head>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+    <script src="https://unpkg.com/vue"></script>
+
+    <title>snek</title>
+
+    <style>
+
+    #game_canvas {
+      width: 800;
+    }
+
+    #game {
+      background-color: white;
+      padding: 0px;
+    }
+
+    </style>
+
+  </head>
+
+<body>
+
+<div id="app">
+
+  <div class="container-fluid" id="game">
+    <canvas id="game_canvas" width="1000" height="1000"></canvas>
+  </div>
+
+</div>
+
+</body>
+
+<script>
+
+var app = new Vue({
+  el: '#app',
+  data: {
+  },
+  methods: {
+  }
+})
+
+</script>
+
+<script src="snake.js"></script>
+
+</html>
