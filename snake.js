@@ -44,7 +44,6 @@ function overdrawMenu(text) {
   ctx.fillText(text,game_canvas.width/2,game_canvas.height/2);
 }
 
-
 function startGame() {
 
   game_interval = setInterval(gameLoop,1000/20);
@@ -68,6 +67,11 @@ function endGame() {
   ended = true;
   clearInterval(game_interval);
   overdrawMenu("Press Space to Play Again");
+}
+
+function clearGame() {
+  clearInterval(game_interval);
+  drawMenu("");
 }
 
 function gameLoop() {
