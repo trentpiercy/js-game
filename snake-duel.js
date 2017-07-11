@@ -54,7 +54,7 @@ function startGame2() {
   game_interval = setInterval(gameLoop2,1000/20);
   game_end = false;
   px=py=1;
-	px2=py2=39;
+	px2=py2=38;
   tiles=40;
   block_size=game_canvas.width/tiles;
   seperation_size = 4;
@@ -88,8 +88,6 @@ function clearGame() {
 }
 
 function gameLoop2() {
-
-	document.getElementById("score").innerHTML = "P1: " + (tail_length-1).toString() +  " P2: " + (tail_length2-1).toString();
 
 	px+=xv;
 	py+=yv;
@@ -170,12 +168,14 @@ function gameLoop2() {
 		tail_length++;
 		ax=Math.floor(Math.random()*tiles);
 		ay=Math.floor(Math.random()*tiles);
+		document.getElementById("score").innerHTML = "P1: " + (tail_length-1).toString() +  " P2: " + (tail_length2-1).toString();
 	}
 
 	if(ax==px2 && ay==py2) {
 		tail_length2++;
 		ax=Math.floor(Math.random()*tiles);
 		ay=Math.floor(Math.random()*tiles);
+		document.getElementById("score").innerHTML = "P1: " + (tail_length-1).toString() +  " P2: " + (tail_length2-1).toString();
 	}
 
 	ctx.fillStyle=apl_color;

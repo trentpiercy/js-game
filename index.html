@@ -48,8 +48,8 @@
     <div class="d-flex justify-content-between">
 
       <div>
-        <button type="button" class="btn btn-outline-primary" @click="showGame=true, showPlayButtons=true" onclick="clearGame()">Play Snake!</button>
-        <button type="button" class="btn btn-outline-primary" @click="clear" onclick="clearGame()">another thing</button>
+        <button type="button" class="btn btn-outline-primary" @click="showGame=true, showPlayButtons=true" onclick="clearGame()">Play</button>
+        <!--<button type="button" class="btn btn-outline-primary" @click="clear" onclick="clearGame()">another thing</button>-->
       </div>
 
       <div>
@@ -65,12 +65,12 @@
 
     <div class="container-fluid" id="game" v-if="showGame">
       <div class="container-fluid">
-        <button type="button" class="btn btn-outline-success" onclick="start()" @click="showPlayButtons=false" v-if="showPlayButtons">Single Player</button>
-        <button type="button" class="btn btn-outline-success" onclick="start1v1()" @click="showPlayButtons=false" v-if="showPlayButtons">Local Duel</button>
+        <button type="button" class="btn btn-outline-success" onclick="start()" @click="showPlayButtons=false, score='Score: 0'" v-if="showPlayButtons">Single Player</button>
+        <button type="button" class="btn btn-outline-success" onclick="start1v1()" @click="showPlayButtons=false, score='P1: 0 P2: 0'" v-if="showPlayButtons">Local Duel</button>
       </div>
 
       <div class="container-fluid">
-        <h3 id="score" v-if="!showPlayButtons">Score: 0</h3>
+        <h3 id="score" v-if="!showPlayButtons">{{ score }}</h3>
         <canvas id="game_canvas" class="rounded" width="1000" height="1000"></canvas>
       </div>
     </div>
@@ -84,6 +84,7 @@
 var app = new Vue({
   el: '#app',
   data: {
+    score: "",
     showGame: true,
     showPlayButtons: true,
     showLeaderboard: false,

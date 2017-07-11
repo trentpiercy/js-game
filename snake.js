@@ -79,8 +79,6 @@ function clearGame() {
 
 function gameLoop() {
 
-	document.getElementById("score").innerHTML = "Score: " + (tail_length-1).toString();
-
 	px+=xv;
 	py+=yv;
 
@@ -119,6 +117,9 @@ function gameLoop() {
 		tail_length++;
 		ax=Math.floor(Math.random()*tiles);
 		ay=Math.floor(Math.random()*tiles);
+
+    document.getElementById("score").innerHTML = "Score: " + (tail_length-1).toString();
+
 	}
 
 	ctx.fillStyle=apl_color;
