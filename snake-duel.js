@@ -1,25 +1,25 @@
-function start() {
+function start1v1() {
 	canvas=document.getElementById("game_canvas");
 	ctx=canvas.getContext("2d");
-	document.addEventListener("keydown",keyPush);
+	document.addEventListener("keydown",keyPush2);
   bg_color = "white";
   apl_color = "#d32f2f";
   snake_color = "#64dd17";
   cooldown = 0;
-  startCountdown();
+  startCountdown2();
 }
 
-function startCountdown() {
+function startCountdown2() {
   count = 3;
 
-  countdown();
-  game_interval = setInterval(countdown,1000);
+  countdown2();
+  game_interval = setInterval(countdown2,1000);
 }
 
-function countdown() {
+function countdown2() {
   if (count == 0) {
     clearInterval(game_interval);
-    startGame();
+    startGame2();
   } else {
     ctx.fillStyle=bg_color;
     ctx.fillRect(0,0,canvas.width,canvas.height);
@@ -31,7 +31,7 @@ function countdown() {
   }
 }
 
-function drawMenu(text) {
+function drawMenu2(text) {
   ctx.fillStyle=bg_color;
   ctx.fillRect(0,0,canvas.width,canvas.height);
   ctx.font = "50px sans-serif";
@@ -40,16 +40,16 @@ function drawMenu(text) {
   ctx.fillText(text,game_canvas.width/2,game_canvas.height/2);
 }
 
-function overdrawMenu(text) {
+function overdrawMenu2(text) {
   ctx.font = "50px sans-serif";
   ctx.fillStyle="black";
   ctx.textAlign = "center";
   ctx.fillText(text,game_canvas.width/2,game_canvas.height/2);
 }
 
-function startGame() {
+function startGame2() {
 
-  game_interval = setInterval(gameLoop,1000/20);
+  game_interval = setInterval(gameLoop2,1000/20);
   game_end = false;
   px=py=1;
   tiles=40;
@@ -69,15 +69,15 @@ function startGame() {
 function endGame() {
   ended = true;
   clearInterval(game_interval);
-  overdrawMenu("Press Space to Play Again");
+  overdrawMenu2("Press Space to Play Again");
 }
 
 function clearGame() {
   clearInterval(game_interval);
-  drawMenu("");
+  drawMenu2("");
 }
 
-function gameLoop() {
+function gameLoop2() {
 
 	document.getElementById("score").innerHTML = "Score: " + (tail_length-1).toString();
 
@@ -133,7 +133,7 @@ function gameLoop() {
 }
 
 // Remove "//" for easy mode
-function keyPush(evt) {
+function keyPush2(evt) {
   if (cooldown<=0) {
   	switch(evt.keyCode) {
   		case 37:
@@ -162,7 +162,7 @@ function keyPush(evt) {
   			break;
       case 32:
         if (ended == true) {
-          startCountdown();
+          startcountdown2();
         }
         break;
   	}
