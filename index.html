@@ -25,13 +25,11 @@
     #game_canvas {
       height: calc(100% - 150px);
       max-width: 100%;
-      border: solid #f7f7f9;
+      border: 4px solid #f7f7f9;
     }
 
     #game {
       background-color: auto;
-      border: 0px solid #f7f7f9;
-      margin: 5px;
     }
 
     .container-fluid {
@@ -97,8 +95,6 @@ var app = new Vue({
     clear: function() {
       this.showGame = false;
       this.showPlayButtons = false;
-      this.showLeaderboard = false;
-      this.showProfile = false;
       this.playNavActive=false;
       this.leaderboardNavActive=false;
       this.profileNavActive=false;
@@ -112,7 +108,6 @@ var app = new Vue({
     leaderboardClick: function() {
       this.clear();
       this.leaderboardNavActive=true;
-
     },
     profileClick: function() {
       this.clear();

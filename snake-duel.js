@@ -8,7 +8,7 @@ function start1v1() {
 	snake2_color = "#42a5f5";
   cooldown = 0;
 	cooldown2 = 0;
-	ended = false;
+	ended1 = false;
   startCountdown2();
 }
 
@@ -60,7 +60,7 @@ function startGame2() {
   tiles=40;
   block_size=game_canvas.width/tiles;
   seperation_size = 4;
-  ended = false;
+  ended1 = false;
 
   ax=Math.floor(Math.random()*tiles);
   ay=Math.floor(Math.random()*tiles);
@@ -79,19 +79,19 @@ function startGame2() {
 }
 
 function endGame() {
-  ended = true;
+  ended1 = true;
   clearInterval(game_interval);
   overdrawMenu2("Press Space to Play Again");
 }
 
 function P1Win() {
-  ended = true;
+  ended1 = true;
   clearInterval(game_interval);
   overdrawMenu2("Player One Wins!");
 }
 
 function P2Win() {
-  ended = true;
+  ended1 = true;
   clearInterval(game_interval);
   overdrawMenu2("Player Two Wins!");
 }
@@ -259,10 +259,10 @@ function keyPush2(evt) {
 				break;
   	}
   }
-	if (ended == true) {
+	if (ended1 == true) {
 		if (evt) {
 			document.getElementById("score").innerHTML = "P1: 0 P2: 0";
-			ended = false;
+			ended1 = false;
 			startCountdown2();
 		}
 	}
