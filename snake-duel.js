@@ -8,6 +8,7 @@ function start1v1() {
 	snake2_color = "#42a5f5";
   cooldown = 0;
 	cooldown2 = 0;
+	ended = false;
   startCountdown2();
 }
 
@@ -50,6 +51,7 @@ function overdrawMenu2(text) {
 }
 
 function startGame2() {
+	document.getElementById("score").innerHTML = "P1: 0 P2: 0";
 
   game_interval = setInterval(gameLoop2,1000/20);
   game_end = false;
@@ -226,11 +228,6 @@ function keyPush2(evt) {
           cooldown = 1;
         //}
   			break;
-      case 32:
-        if (ended == true) {
-          startCountdown2();
-        }
-        break;
 		}
 	}
 
@@ -262,4 +259,11 @@ function keyPush2(evt) {
 				break;
   	}
   }
+	if (ended == true) {
+		if (evt) {
+			document.getElementById("score").innerHTML = "P1: 0 P2: 0";
+			ended = false;
+			startCountdown2();
+		}
+	}
 }

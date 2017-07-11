@@ -6,6 +6,7 @@ function start() {
   apl_color = "#d32f2f";
   snake_color = "#64dd17";
   cooldown = 0;
+	ended = false;
   startCountdown();
 }
 
@@ -48,6 +49,7 @@ function overdrawMenu(text) {
 }
 
 function startGame() {
+	document.getElementById("score").innerHTML = "Score: 0";
 
   game_interval = setInterval(gameLoop,1000/20);
   game_end = false;
@@ -55,7 +57,7 @@ function startGame() {
   tiles=40;
   block_size=game_canvas.width/tiles;
   seperation_size = 4;
-  ended = false;
+	ended = false;
 
   ax=Math.floor(Math.random()*tiles);
   ay=Math.floor(Math.random()*tiles);
@@ -69,7 +71,7 @@ function startGame() {
 function endGame() {
   ended = true;
   clearInterval(game_interval);
-  overdrawMenu("Press Space to Play Again");
+  overdrawMenu("You hit yourself!");
 }
 
 function clearGame() {
@@ -102,7 +104,7 @@ function gameLoop() {
 	for(var i=0;i<tail_coords.length;i++) {
 		ctx.fillRect(tail_coords[i].x*block_size,tail_coords[i].y*block_size,block_size-seperation_size,block_size-seperation_size);
 		if(tail_coords[i].x==px && tail_coords[i].y==py) {
-      game_end = true;
+      endGame()
 		}
 	}
 
@@ -117,17 +119,12 @@ function gameLoop() {
 		tail_length++;
 		ax=Math.floor(Math.random()*tiles);
 		ay=Math.floor(Math.random()*tiles);
-
     document.getElementById("score").innerHTML = "Score: " + (tail_length-1).toString();
 
 	}
 
 	ctx.fillStyle=apl_color;
 	ctx.fillRect(ax*block_size,ay*block_size,block_size-2,block_size-2);
-
-  if (game_end == true) {
-    endGame();
-  }
 
   cooldown--;
 
@@ -161,11 +158,13 @@ function keyPush(evt) {
           cooldown = 1;
         //}
   			break;
-      case 32:
-        if (ended == true) {
-          startCountdown();
-        }
-        break;
   	}
   }
+	if (ended == true) {
+		if (evt) {
+			document.getElementById("score").innerHTML = "Score: 0";
+			ended = false;
+			startCountdown();
+		}
+	}
 }
