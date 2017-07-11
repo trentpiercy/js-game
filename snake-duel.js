@@ -82,6 +82,18 @@ function endGame() {
   overdrawMenu2("Press Space to Play Again");
 }
 
+function P1Win() {
+  ended = true;
+  clearInterval(game_interval);
+  overdrawMenu2("Player One Wins!");
+}
+
+function P2Win() {
+  ended = true;
+  clearInterval(game_interval);
+  overdrawMenu2("Player Two Wins!");
+}
+
 function clearGame() {
   clearInterval(game_interval);
   drawMenu2("");
@@ -129,12 +141,12 @@ function gameLoop2() {
 		ctx.fillRect(tail_coords[i].x*block_size,tail_coords[i].y*block_size,block_size-seperation_size,block_size-seperation_size);
 
 		if(tail_coords[i].x==px && tail_coords[i].y==py) {
-      game_end = true;
+      P2Win()
 		}
 
 		for(var n=0;n<tail_coords2.length;n++) {
 			if(px==tail_coords2[n].x && py==tail_coords2[n].y) {
-	      game_end = true;
+	      P2Win()
 			}
 		}
 	}
@@ -143,12 +155,12 @@ function gameLoop2() {
 		ctx.fillRect(tail_coords2[i].x*block_size,tail_coords2[i].y*block_size,block_size-seperation_size,block_size-seperation_size);
 
 		if(tail_coords2[i].x==px2 && tail_coords2[i].y==py2) {
-			game_end = true;
+			P1Win()
 		}
 
 		for(var n=0;n<tail_coords.length;n++) {
 			if(px2==tail_coords[n].x && py2==tail_coords[n].y) {
-				game_end = true;
+				P1Win()
 			}
 		}
 	}
@@ -180,10 +192,6 @@ function gameLoop2() {
 
 	ctx.fillStyle=apl_color;
 	ctx.fillRect(ax*block_size,ay*block_size,block_size-2,block_size-2);
-
-  if (game_end == true) {
-    endGame();
-  }
 
   cooldown--;
 	cooldown2--;
