@@ -48,7 +48,7 @@
     <div class="d-flex justify-content-between">
 
       <div>
-        <button type="button" class="btn btn-outline-primary" @click="clear, showGame=true, showPlayButtons=true" onclick="clearGame()">Play Snake!</button>
+        <button type="button" class="btn btn-outline-primary" @click="showGame=true, showPlayButtons=true" onclick="clearGame()">Play Snake!</button>
         <button type="button" class="btn btn-outline-primary" @click="clear" onclick="clearGame()">another thing</button>
       </div>
 
@@ -86,11 +86,15 @@ var app = new Vue({
   data: {
     showGame: true,
     showPlayButtons: true,
+    showLeaderboard: false,
+    showProfile: false,
   },
   methods: {
     clear: function() {
       this.showGame = false;
       this.showPlayButtons = false;
+      this.showLeaderboard = false;
+      this.showProfile = false;
     }
   }
 })
