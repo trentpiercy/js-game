@@ -48,13 +48,13 @@
     <div class="d-flex justify-content-between">
 
       <div>
-        <button type="button" class="btn btn-outline-primary" v-on:click="showGame=true, showPlayButton=true" onclick="clearGame()">Play Snake!</button>
-        <button type="button" class="btn btn-outline-primary" v-on:click="showGame=false" onclick="clearGame()">another thing</button>
+        <button type="button" class="btn btn-outline-primary" @click="clear, showGame=true, showPlayButtons=true" onclick="clearGame()">Play Snake!</button>
+        <button type="button" class="btn btn-outline-primary" @click="clear" onclick="clearGame()">another thing</button>
       </div>
 
       <div>
-        <button type="button" class="btn btn-outline-info" v-on:click="">Leaderboard</button>
-        <button type="button" class="btn btn-outline-info" v-on:click="">Profile</button>
+        <button type="button" class="btn btn-outline-info" @click="clear" onclick="clearGame()">Leaderboard</button>
+        <button type="button" class="btn btn-outline-info" @click="clear" onclick="clearGame()">Profile</button>
       </div>
 
     </div>
@@ -65,12 +65,12 @@
 
     <div class="container-fluid" id="game" v-if="showGame">
       <div class="container-fluid">
-        <button type="button" class="btn btn-outline-success" onclick="start()" @click="showPlayButton=false" v-if="showPlayButton">Single Player</button>
-        <button type="button" class="btn btn-outline-success" onclick="start1v1()" @click="showPlayButton=false" v-if="showPlayButton">Local 1v1</button>
+        <button type="button" class="btn btn-outline-success" onclick="start()" @click="showPlayButtons=false" v-if="showPlayButtons">Single Player</button>
+        <button type="button" class="btn btn-outline-success" onclick="start1v1()" @click="showPlayButtons=false" v-if="showPlayButtons">Local 1v1</button>
       </div>
 
       <div class="container-fluid">
-        <h3 id="score" v-if="!showPlayButton">Score: 0</h3>
+        <h3 id="score" v-if="!showPlayButtons">Score: 0</h3>
         <canvas id="game_canvas" class="rounded" width="1000" height="1000"></canvas>
       </div>
     </div>
@@ -85,9 +85,13 @@ var app = new Vue({
   el: '#app',
   data: {
     showGame: true,
-    showPlayButton: true,
+    showPlayButtons: true,
   },
   methods: {
+    clear: function() {
+      this.showGame = false;
+      this.showPlayButtons = false;
+    }
   }
 })
 </script>
