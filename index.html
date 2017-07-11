@@ -48,13 +48,13 @@
     <div class="d-flex justify-content-between">
 
       <div>
-        <button type="button" class="btn btn-outline-primary" @click="showGame=true, showPlayButtons=true" onclick="clearGame()">Play</button>
+        <button type="button" class="btn btn-outline-primary" v-bind:class="{ active: playNavActive }" @click="playClick" onclick="clearGame()">Play</button>
         <!--<button type="button" class="btn btn-outline-primary" @click="clear" onclick="clearGame()">another thing</button>-->
       </div>
 
       <div>
-        <button type="button" class="btn btn-outline-info" @click="clear" onclick="clearGame()">Leaderboard</button>
-        <button type="button" class="btn btn-outline-info" @click="clear" onclick="clearGame()">Profile</button>
+        <button type="button" class="btn btn-outline-info" v-bind:class="{ active: leaderboardNavActive }" @click="leaderboardClick" onclick="clearGame()">Leaderboard</button>
+        <button type="button" class="btn btn-outline-info" v-bind:class="{ active: profileNavActive }" @click="profileClick" onclick="clearGame()">Profile</button>
       </div>
 
     </div>
@@ -89,6 +89,9 @@ var app = new Vue({
     showPlayButtons: true,
     showLeaderboard: false,
     showProfile: false,
+    playNavActive: true,
+    leaderboardNavActive: false,
+    profileNavActive: false,
   },
   methods: {
     clear: function() {
@@ -96,6 +99,24 @@ var app = new Vue({
       this.showPlayButtons = false;
       this.showLeaderboard = false;
       this.showProfile = false;
+      this.playNavActive=false;
+      this.leaderboardNavActive=false;
+      this.profileNavActive=false;
+    },
+    playClick: function() {
+      this.clear();
+      this.showGame=true;
+      this.showPlayButtons=true;
+      this.playNavActive=true;
+    },
+    leaderboardClick: function() {
+      this.clear();
+      this.leaderboardNavActive=true;
+
+    },
+    profileClick: function() {
+      this.clear();
+      this.profileNavActive=true;
     }
   }
 })
