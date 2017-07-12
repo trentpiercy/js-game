@@ -14,7 +14,6 @@ function start1v1() {
 
 function startCountdown2() {
   count = 3;
-
   countdown2();
   game_interval = setInterval(countdown2,1000);
 }
@@ -78,12 +77,6 @@ function startGame2() {
 	tail_length2 = 1;
 }
 
-function endGame() {
-  ended1 = true;
-  clearInterval(game_interval);
-  overdrawMenu2("Press Space to Play Again");
-}
-
 function P1Win() {
   ended1 = true;
   clearInterval(game_interval);
@@ -138,20 +131,7 @@ function gameLoop2() {
 	ctx.fillStyle=bg_color;
 	ctx.fillRect(0,0,canvas.width,canvas.height);
 
-	ctx.fillStyle=snake_color;
-	for(var i=0;i<tail_coords.length;i++) {
-		ctx.fillRect(tail_coords[i].x*block_size,tail_coords[i].y*block_size,block_size-seperation_size,block_size-seperation_size);
-
-		if(tail_coords[i].x==px && tail_coords[i].y==py) {
-      P2Win()
-		}
-
-		for(var n=0;n<tail_coords2.length;n++) {
-			if(px==tail_coords2[n].x && py==tail_coords2[n].y) {
-	      P2Win()
-			}
-		}
-	}
+	// P1 Priority
 	ctx.fillStyle=snake2_color;
 	for(var i=0;i<tail_coords2.length;i++) {
 		ctx.fillRect(tail_coords2[i].x*block_size,tail_coords2[i].y*block_size,block_size-seperation_size,block_size-seperation_size);
@@ -163,6 +143,21 @@ function gameLoop2() {
 		for(var n=0;n<tail_coords.length;n++) {
 			if(px2==tail_coords[n].x && py2==tail_coords[n].y) {
 				P1Win()
+			}
+		}
+	}
+
+	ctx.fillStyle=snake_color;
+	for(var i=0;i<tail_coords.length;i++) {
+		ctx.fillRect(tail_coords[i].x*block_size,tail_coords[i].y*block_size,block_size-seperation_size,block_size-seperation_size);
+
+		if(tail_coords[i].x==px && tail_coords[i].y==py) {
+      P2Win()
+		}
+
+		for(var n=0;n<tail_coords2.length;n++) {
+			if(px==tail_coords2[n].x && py==tail_coords2[n].y) {
+	      P2Win()
 			}
 		}
 	}

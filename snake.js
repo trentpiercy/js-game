@@ -12,7 +12,6 @@ function start() {
 
 function startCountdown() {
   count = 3;
-
   countdown();
   game_interval = setInterval(countdown,1000);
 }
