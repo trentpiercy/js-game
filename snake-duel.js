@@ -132,17 +132,19 @@ function gameLoop2() {
 	ctx.fillRect(0,0,canvas.width,canvas.height);
 
 	// P1 Priority
+	p1win = false;
+	p2win = false;
 	ctx.fillStyle=snake2_color;
 	for(var i=0;i<tail_coords2.length;i++) {
 		ctx.fillRect(tail_coords2[i].x*block_size,tail_coords2[i].y*block_size,block_size-seperation_size,block_size-seperation_size);
 
 		if(tail_coords2[i].x==px2 && tail_coords2[i].y==py2) {
-			P1Win()
+			p1win = true;
 		}
 
 		for(var n=0;n<tail_coords.length;n++) {
 			if(px2==tail_coords[n].x && py2==tail_coords[n].y) {
-				P1Win()
+				p1win = true;
 			}
 		}
 	}
@@ -152,12 +154,12 @@ function gameLoop2() {
 		ctx.fillRect(tail_coords[i].x*block_size,tail_coords[i].y*block_size,block_size-seperation_size,block_size-seperation_size);
 
 		if(tail_coords[i].x==px && tail_coords[i].y==py) {
-      P2Win()
+      p2win = true;
 		}
 
 		for(var n=0;n<tail_coords2.length;n++) {
 			if(px==tail_coords2[n].x && py==tail_coords2[n].y) {
-	      P2Win()
+	      p2win = true;
 			}
 		}
 	}
@@ -177,6 +179,12 @@ function gameLoop2() {
 		tail_length++;
 		ax=Math.floor(Math.random()*tiles);
 		ay=Math.floor(Math.random()*tiles);
+
+		while (ax == px && ay == py || ax == px2 && ay == py2) {
+			ax=Math.floor(Math.random()*tiles);
+			ay=Math.floor(Math.random()*tiles);
+		}
+
 		document.getElementById("score").innerHTML = "P1: " + (tail_length-1).toString() +  " P2: " + (tail_length2-1).toString();
 	}
 
@@ -184,6 +192,12 @@ function gameLoop2() {
 		tail_length2++;
 		ax=Math.floor(Math.random()*tiles);
 		ay=Math.floor(Math.random()*tiles);
+
+		while (ax == px && ay == py || ax == px2 && ay == py2) {
+			ax=Math.floor(Math.random()*tiles);
+			ay=Math.floor(Math.random()*tiles);
+		}
+
 		document.getElementById("score").innerHTML = "P1: " + (tail_length-1).toString() +  " P2: " + (tail_length2-1).toString();
 	}
 
@@ -192,6 +206,12 @@ function gameLoop2() {
 
   cooldown--;
 	cooldown2--;
+
+	if (p1win == true) {
+		P1Win()
+	} else if (p2win == true) {
+		P2Win()
+	}
 
 }
 

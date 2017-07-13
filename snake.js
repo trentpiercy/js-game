@@ -100,10 +100,11 @@ function gameLoop() {
 	ctx.fillRect(0,0,canvas.width,canvas.height);
 
 	ctx.fillStyle=snake_color;
+	end = false;
 	for(var i=0;i<tail_coords.length;i++) {
 		ctx.fillRect(tail_coords[i].x*block_size,tail_coords[i].y*block_size,block_size-seperation_size,block_size-seperation_size);
 		if(tail_coords[i].x==px && tail_coords[i].y==py) {
-      endGame()
+      end = true;
 		}
 	}
 
@@ -118,14 +119,23 @@ function gameLoop() {
 		tail_length++;
 		ax=Math.floor(Math.random()*tiles);
 		ay=Math.floor(Math.random()*tiles);
-    document.getElementById("score").innerHTML = "Score: " + (tail_length-1).toString();
 
+		while (ax == px && ay == py) {
+			ax=Math.floor(Math.random()*tiles);
+			ay=Math.floor(Math.random()*tiles);
+		}
+
+    document.getElementById("score").innerHTML = "Score: " + (tail_length-1).toString();
 	}
 
 	ctx.fillStyle=apl_color;
 	ctx.fillRect(ax*block_size,ay*block_size,block_size-2,block_size-2);
 
   cooldown--;
+
+	if (end == true) {
+		endGame()
+	}
 
 }
 
