@@ -101,7 +101,7 @@ function gameLoop() {
 
 	ctx.fillStyle=snake_color;
 	end = false;
-	for(var i=0;i<tail_coords.length;i++) {
+	for(i=0;i<tail_coords.length;i++) {
 		ctx.fillRect(tail_coords[i].x*block_size,tail_coords[i].y*block_size,block_size-seperation_size,block_size-seperation_size);
 		if(tail_coords[i].x==px && tail_coords[i].y==py) {
       end = true;
@@ -123,6 +123,13 @@ function gameLoop() {
 		while (ax == px && ay == py) {
 			ax=Math.floor(Math.random()*tiles);
 			ay=Math.floor(Math.random()*tiles);
+		}
+
+		for(i=0;i<tail_coords.length;i++) {
+			while (ax == tail_coords[i].x && ay == tail_coords[i].y) {
+				ax=Math.floor(Math.random()*tiles);
+				ay=Math.floor(Math.random()*tiles);
+			}
 		}
 
     document.getElementById("score").innerHTML = "Score: " + (tail_length-1).toString();
