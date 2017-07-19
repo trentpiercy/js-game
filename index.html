@@ -54,15 +54,15 @@
 
   <nav class="navbar navbar-light">
     <div class="d-flex justify-content-between">
+    <!-- Add onclick="clearGame()" to clear game when other button pressed -->
 
       <div>
         <button type="button" class="btn btn-outline-primary" v-bind:class="{ active: playNavActive }" @click="playClick" onclick="clearGame()">Play</button>
-        <!--<button type="button" class="btn btn-outline-primary" @click="clear" onclick="clearGame()">another thing</button>-->
       </div>
 
       <div>
-        <button type="button" class="btn btn-outline-info" v-bind:class="{ active: leaderboardNavActive }" @click="leaderboardClick" onclick="clearGame()">Leaderboard</button>
-        <button type="button" class="btn btn-outline-info" v-bind:class="{ active: profileNavActive }" @click="profileClick" onclick="clearGame()">Profile</button>
+        <button type="button" class="btn btn-outline-info" v-bind:class="{ active: leaderboardNavActive }" @click="leaderboardClick">Leaderboard</button>
+        <button type="button" class="btn btn-outline-info" v-bind:class="{ active: profileNavActive }" @click="profileClick">Profile</button>
       </div>
 
     </div>
@@ -72,14 +72,14 @@
   <div class="d-flex justify-content-center">
 
     <!-- Game Div -->
-    <div class="container-fluid" id="game" v-if="showGame">
+    <div class="container-fluid" id="game" v-show="showGame">
       <div class="container-fluid">
         <button type="button" class="btn btn-outline-success" onclick="start()" @click="showPlayButtons=false, score='Score: 0'" v-if="showPlayButtons">Single Player</button>
         <button type="button" class="btn btn-outline-success" onclick="start1v1()" @click="showPlayButtons=false, score='P1: 0 P2: 0'" v-if="showPlayButtons">Local Duel</button>
       </div>
 
       <div class="container-fluid">
-        <h3 id="score" v-if="!showPlayButtons">{{ score }}</h3>
+        <h3 id="score" v-show="!showPlayButtons">{{ score }}</h3>
         <canvas id="game_canvas" class="rounded" width="1000" height="1000"></canvas>
       </div>
     </div>
@@ -87,7 +87,6 @@
     <!-- Leaderboard Div -->
     <div class="container-fluid" id="leaderboardContainer" v-if="leaderboardNavActive">
     leaderboard
-    <hr>test
     </div>
 
     <!-- Profile Div -->

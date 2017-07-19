@@ -177,7 +177,7 @@ function keyPush(evt) {
   	}
   }
 	if (ended == true) {
-		if (evt) {
+		if (evt.keyCode == 32) {
 			document.getElementById("score").innerHTML = "Score: 0";
 			ended = false;
 			startCountdown();

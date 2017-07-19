@@ -302,8 +302,8 @@ function keyPush2(evt) {
 				break;
   	}
   }
-	if (ended1 == true) {
-		if (evt) {
+	if (ended == true) {
+		if (evt.keyCode == 32) {
 			document.getElementById("score").innerHTML = "P1: 0 P2: 0";
 			ended1 = false;
 			startCountdown2();
