@@ -1,3 +1,9 @@
+// to do:
+// tie on head on
+// decide win number
+// display score (-) starting length
+// differnt win msgs on hitting self/hitting other player
+
 var app = new Vue({
   el: '#app',
   data: {

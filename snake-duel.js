@@ -52,7 +52,7 @@ function overdrawMenu2(text) {
 function startGame2() {
 	document.getElementById("score").innerHTML = "P1: 0 P2: 0";
 
-  game_interval = setInterval(gameLoop2,1000/20);
+  game_interval = setInterval(gameLoop2,1000/15);
   game_end = false;
   px=py=1;
 	px2=py2=38;
@@ -71,10 +71,10 @@ function startGame2() {
 	yv2=0;
 
   tail_coords=[];
-  tail_length = 1;
+  tail_length = 5;
 
 	tail_coords2=[];
-	tail_length2 = 1;
+	tail_length2 = 5;
 }
 
 function P1Win() {
@@ -248,28 +248,28 @@ function keyPush2(evt) {
   if (cooldown<=0) {
   	switch(evt.keyCode) {
   		case 37:
-        //if (xv !== 1) {
+        if (xv !== 1) {
           xv=-1;yv=0;
           cooldown = 1;
-        //}
+        }
   			break;
   		case 38:
-        //if (yv !== 1) {
+        if (yv !== 1) {
           xv=0;yv=-1;
           cooldown = 1;
-        //}
+        }
   			break;
   		case 39:
-        //if (xv !== -1) {
+      	if (xv !== -1) {
           xv=1;yv=0;
           cooldown = 1;
-        //}
+        }
   			break;
   		case 40:
-        //if (yv !== -1) {
+        if (yv !== -1) {
           xv=0;yv=1;
           cooldown = 1;
-        //}
+        }
   			break;
 		}
 	}
@@ -277,32 +277,33 @@ function keyPush2(evt) {
 	if (cooldown2<=0) {
 		switch(evt.keyCode) {
 			case 65:
-	      //if (xv !== 1) {
+	      if (xv2 !== 1) {
 	        xv2=-1;yv2=0;
 	        cooldown2 = 1;
-	      //}
+	      }
 				break;
 			case 87:
-	      //if (yv !== 1) {
+	     	if (yv2 !== 1) {
 	        xv2=0;yv2=-1;
 	        cooldown2 = 1;
-	      //}
+	      }
 				break;
 			case 68:
-	      //if (xv !== -1) {
+	      if (xv2 !== -1) {
 	        xv2=1;yv2=0;
 	        cooldown2 = 1;
-	      //}
+	      }
 				break;
 			case 83:
-	      //if (yv !== -1) {
+	      if (yv2 !== -1) {
 	        xv2=0;yv2=1;
 	        cooldown2 = 1;
-	      //}
+	      }
 				break;
   	}
   }
-	if (ended == true) {
+
+	if (ended1 == true) {
 		if (evt.keyCode == 32) {
 			document.getElementById("score").innerHTML = "P1: 0 P2: 0";
 			ended1 = false;
